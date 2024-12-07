@@ -4,7 +4,11 @@ const sass = require("sass");
 const axios = require("axios");
 const markdownIt = require("markdown-it");
 const path = require("path");
-  const apiUrl = process.env.STRAPI_API_URL || "http://127.0.0.1:1337";
+require('dotenv').config();
+
+const apiUrl = process.env.STRAPI_API_URL;
+const apiToken = process.env.STRAPI_API_TOKEN;
+
 
 // Define the options for Markdown-It
 const markdownItOptions = {
@@ -78,7 +82,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("workoutPages", async function (collectionApi) {
     try {
       // Send a GET request to fetch workout data from the Strapi API with a 5-second timeout
-      const response = await axios.get("${apiUrl}/api/workouts", {
+      const response = await axios.get(`${apiUrl}/api/workouts`, {
+        headers: {
+          Authorization: `Bearer ${apiToken}`,
+        },
         timeout: 5000,
       });
 
@@ -126,8 +133,13 @@ module.exports = function (eleventyConfig) {
       try {
         // Fetch workout data from Strapi CMS for the 'cardio' slug with a timeout of 5 seconds
         const response = await axios.get(
-          "http://127.0.0.1:1337/api/workouts?filters[Slug][$eq]=cardio",
-          { timeout: 5000 }
+          `${apiUrl}/api/workouts?filters[Slug][$eq]=cardio`,
+          { headers: {
+            Authorization: `Bearer ${apiToken}`,
+          },
+            timeout: 5000 
+
+          }
         );
 
         // Check if the response contains valid data; if not, log an error and return an empty array
@@ -164,8 +176,14 @@ module.exports = function (eleventyConfig) {
       // Fetch cardio exercises from Strapi, filtering by the related workout slug ('cardio')
       // Also populate the image field to get the image URL, with a timeout of 5 seconds
       const response = await axios.get(
-        "http://127.0.0.1:1337/api/exercises?filters[workout][Slug][$eq]=cardio&populate[Image][fields]=url",
-        { timeout: 5000 }
+        `${apiUrl}/api/exercises?filters[workout][Slug][$eq]=cardio&populate[Image][fields]=url`,
+        { 
+          headers: {
+            Authorization: `Bearer ${apiToken}`,
+          },
+          timeout: 5000 
+
+        }
       );
 
       // Log the full response data for debugging to ensure images are being returned correctly
@@ -192,7 +210,7 @@ module.exports = function (eleventyConfig) {
         // Extract the image URL and construct the full path
         const imageUrl = attributes.Image?.url;
         const fullUrl = imageUrl
-          ? `http://127.0.0.1:1337${imageUrl}`
+          ? `${apiUrl}${imageUrl}`
           : "/css/default-exercise.png";
 
         // Log the exercise name and image URL for debugging purposes
@@ -220,8 +238,14 @@ module.exports = function (eleventyConfig) {
       try {
         // Fetch workout data from Strapi for the 'strength-training' slug with a timeout of 5 seconds
         const response = await axios.get(
-          "http://127.0.0.1:1337/api/workouts?filters[Slug][$eq]=strength-training",
-          { timeout: 5000 }
+          `${apiUrl}/api/workouts?filters[Slug][$eq]=strength-training`,
+          { 
+            headers: {
+              Authorization: `Bearer ${apiToken}`,
+            },
+            timeout: 5000 
+
+          }
         );
 
         // Log the response data for debugging purposes to verify data fetching
@@ -270,8 +294,14 @@ module.exports = function (eleventyConfig) {
       // Fetch strength training exercises from Strapi, filtering by the related workout slug ('strength-training')
       // Also populate the image field to get the image URL, with a timeout of 5 seconds
       const response = await axios.get(
-        "http://127.0.0.1:1337/api/exercises?filters[workout][Slug][$eq]=strength-training&populate[Image][fields]=url",
-        { timeout: 5000 }
+        `${apiUrl}/api/exercises?filters[workout][Slug][$eq]=strength-training&populate[Image][fields]=url`,
+        { 
+          headers: {
+            Authorization: `Bearer ${apiToken}`,
+          },
+          timeout: 5000 
+
+        }
       );
 
       // Log the full response data for debugging to ensure images are being returned correctly
@@ -298,7 +328,7 @@ module.exports = function (eleventyConfig) {
         // Extract the image URL and construct the full path
         const imageUrl = attributes.Image?.url;
         const fullUrl = imageUrl
-          ? `http://127.0.0.1:1337${imageUrl}`
+          ? `${apiUrl}${imageUrl}`
           : "/css/default-exercise.png";
 
         // Log the exercise name and image URL for debugging purposes
@@ -328,8 +358,14 @@ module.exports = function (eleventyConfig) {
     try {
       // Fetch yoga workout data from Strapi for the 'yoga' slug with a timeout of 5 seconds
       const response = await axios.get(
-        "http://127.0.0.1:1337/api/workouts?filters[Slug][$eq]=yoga",
-        { timeout: 5000 }
+        `${apiUrl}/api/workouts?filters[Slug][$eq]=yoga`,
+        { 
+          headers: {
+            Authorization: `Bearer ${apiToken}`,
+          },
+          timeout: 5000 
+
+        }
       );
 
       // Check if the response contains valid data; if not, log an error and return an empty array
@@ -368,8 +404,13 @@ module.exports = function (eleventyConfig) {
       // Fetch yoga exercises from Strapi, filtering by the related workout slug ('yoga')
       // Also populate the image field to get the image URL, with a timeout of 5 seconds
       const response = await axios.get(
-        "http://127.0.0.1:1337/api/exercises?filters[workout][Slug][$eq]=yoga&populate[Image][fields]=url",
-        { timeout: 5000 }
+        `${apiUrl}/api/exercises?filters[workout][Slug][$eq]=yoga&populate[Image][fields]=url`,
+        { 
+          headers: {
+            Authorization: `Bearer ${apiToken}`,
+          },
+          timeout: 5000 
+        }
       );
 
       // Log the full response data for debugging to ensure images are being returned correctly
@@ -431,7 +472,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("blogPosts", async function () {
     try {
       // Fetch blog posts from Strapi with a timeout of 5 seconds
-      const response = await axios.get("http://127.0.0.1:1337/api/blog-posts", {
+      const response = await axios.get(`${apiUrl}/api/blog-posts`, {
+        headers: {
+          Authorization: `Bearer ${apiToken}`,
+        },
         timeout: 5000,
         
       });
