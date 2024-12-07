@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Define character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure proper scaling on mobile devices -->
+<link rel="stylesheet" href="/css/main.css">
+  <title></title> <!-- Dynamic page title -->
+</head>
+<body>
+
+  <div class="wrapper"> <!-- Main wrapper for the content -->
+    <div class="banner">
+      <div class="navbar">
+        <img src="/css/logo.png" class="logo">
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/about">About</a></li>
+    <li><a href="/pages/terms-and-conditions">Terms and Conditions</a></li>
+     <li><a href="/blog/page/0/">Blogs</a></li> 
+</ul>
+ <!-- Include the header partial (navigation) -->
+      </div>
+    </div>
+
+    <div class="content">
+      
+
+<section class="blog-section content">
+  <div class="container">
+    <h1>Blog Posts</h1>
+
+    <!-- Dropdown for Category Filtering -->
+    <form action="/blog/page/0/" method="GET">
+  <select name="category" onchange="this.form.submit()">
+    <option value="All" >All Categories</option>
+    <option value="Labs" >Labs</option>
+    <option value="Technology" >Technology</option>
+    <option value="Fitness" >Fitness</option>
+  </select>
+</form>
+
+
+    <!-- Blog Post List -->
+        <div class="blog-post-card">
+          <h2 class="blog-title">Lab 1: Documenting My Experience with Static Site Generation (SSG)</h2>
+          <p class="card-subtitle">Posted on: Sat Sep 21 2024 18:00:00 GMT-0400 (Eastern Daylight Saving Time)</p>
+          <p class="card-category">Category: Labs</p>
+          <div class="card-text"><h2>Introduction</h2>
+<p>In this post, I want to share my experience of working with Static Site Generators (SSG) for Lab 1. The goal of this lab was to explore and document different template engines, compare Static Site Generation tools, and configure 11ty for modern web development. I’m writing this because SSGs are powerful tools for building fast and maintainable websites, and understanding them is an important skill for my future career as a web developer.</p>
+<h2>Template Engines</h2>
+<p><a href="https://codechronicle.medium.com/pros-and-cons-of-popular-javascript-templating-engines-e5d1e3d4504f">Reference 1</a></p>
+<h3>Nunjucks</h3>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Nunjucks has a syntax similar to JavaScript, which makes it easier for people to learn as JavaScript is very common.</li>
+<li>Nunjucks can be used for both server side with Node.JS and client side showcasing, its compatibility .</li>
+<li>The engine is well documented making it easy to learn and troubleshoot</li>
+<li>Ability to handle complex data and layouts</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Nujucks is a JavaScript based template (requires Node.js environment), which can be unsatisfying for projects that don't   want to rely on JS.</li>
+<li>Learning curve for beginners.</li>
+</ul>
+<h3>Handlebars</h3>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Clean and straightforward syntax, making it easy to read.</li>
+<li>Integration is easy, especially with existing projects using Mustache templates.</li>
+<li>Handlebar.js has logic and helpers that provides extra functionality.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Learning curve for beginners</li>
+<li>Performance overhead.</li>
+</ul>
+<h3>Mustache</h3>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simplicity, which makes it easy to learn and implement into projects.</li>
+<li>Multi-language support.</li>
+<li>Less complex logic, which makes the templates very readable.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>The less logic approach can be a downside for projects that require more complex operations.</li>
+<li>Lack of advanced features compared to other engines.</li>
+</ul>
+<p><strong>My Choice: Nunjucks</strong>
+Out of all the templates I have researched on, I would personally choose Nunjucks (for this assignment). Nunjucks is very similar to JavaScript and it would be a good choice for me because of my familiarity with web development and the usage of JavaScript throughout the Computer Programming and Analyst program at Durham College. Although, it may be difficult to learn I believe that because of its pros such as, its ability to handle complex data and layouts will allow me to create projects that can be more difficult in the future hence, enhancing my portfolio when it comes to it. The pros and benefits of Nunjucks, out weight the pros and benefits of the other templates I have researched</p>
+<h2>Other SSG Applications</h2>
+<p><a href="https://www.usecue.com/blog/why-choose-hugo-as-your-static-site-generator/">Reference 1</a>
+<a href="https://cleancommit.io/blog/the-pros-and-cons-of-using-gatsby/">Reference 2</a>
+<a href="https://medium.com/@ezinneanne/top-ten-popular-static-site-generators-ssg-in-2023-e1894fca6925">Reference 3</a></p>
+<h3>Jekyll</h3>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Very popular SSG, with a large community and plugins</li>
+<li>Easy Integration with GitHub</li>
+<li>Free to use</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Ruby dependent</li>
+<li>Build time is slow.</li>
+</ul>
+<h3>Hugo</h3>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Fastest static site generator (Go programming language)</li>
+<li>Light weight and flexible allowing creation and management to be easy</li>
+<li>Low maintenance</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Steeper learning curve due to its unique templating language.</li>
+<li>Smaller community compared to Jekyll.</li>
+</ul>
+<h3>Gatsby</h3>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>A lot of Plugins and integrations .</li>
+<li>React based, which is good for developers with experience with React..</li>
+<li>Very good for high interactive websites.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Over complicated for SSG</li>
+<li>Slow build times that depends on how complex it is.</li>
+</ul>
+<h2>11ty Configuration</h2>
+<h3>Settings  we are using and why?</h3>
+<ol>
+<li>
+<p><strong>Template Formats (<code>templateFormats</code>)</strong>: - This tells 11ty what kinds of files to work with. For this project, I've set it up to handle Nunjucks (<code>njk</code>), Markdown (<code>md</code>), and HTML, so you can use a variety of content files. <a href="https://www.11ty.dev/docs/config/#template-formats">Reference: 11ty Configuration - Template Formats</a></p>
+</li>
+<li>
+<p>. <strong>Directory Structure (<code>dir</code>)</strong>: Properly organizing your files by setting the <code>dir</code> parameter to specify the input and output directories, such as <code>src</code> and <code>dist</code> respectively, is crucial for ensuring accurate processing and output of content by 11ty.<a href="https://www.11ty.dev/docs/config/#directory">Reference: 11ty Configuration - Directory Structure</a></p>
+</li>
+<li>
+<p><strong>Passthrough File Copy (<code>addPassthroughCopy</code>)</strong>:  Use the <code>addPassthroughCopy</code> setting to directly copy static assets like CSS, images, and JavaScript to the output directory. This way, the files will be ready to use on the final site without any processing. <a href="https://www.11ty.dev/docs/copy/">Reference: 11ty Configuration - Passthrough Copy</a></p>
+</li>
+<li>
+<p><strong>Front Matter</strong>: Use front matter in your markdown files to manage metadata like titles, tags, and layout choices. This will help in rendering content correctly based on the metadata.. <a href="https://www.11ty.dev/docs/data-frontmatter/">Reference: 11ty Configuration - Front Matter</a></p>
+</li>
+<li>
+<p><strong>Collections</strong>:-Collections are configured to group similar content types, such as blog posts, together. This makes it easier to apply consistent layouts and pagination. <a href="https://www.11ty.dev/docs/collections/">Reference: 11ty Configuration - Collections</a></p>
+</li>
+</ol>
+<h3>Potential Settings</h3>
+<ul>
+<li><strong>Custom Filters and Short codes:</strong> Reuse of code snippets and data will allow me to manage and write code more efficiently and easily</li>
+<li><strong>Markdown Plugins:</strong> I can introduce custom syntax or features, including footnotes or special elements, to create more dynamic and interesting content.</li>
+</ul>
+<h2>Understanding Front Matter</h2>
+<p><a href="https://dpericich.medium.com/what-is-front-matter-and-how-is-it-used-to-create-dynamic-webpages-9d8dc053b457">Reference 1</a></p>
+<p>Front matter refers to the section of a markdown file that gives context to the content of the file, which allows us to do a lot of actions. In general, it gives context to the content of the file.</p>
+<p>Front matter is an important tool in web development, especially for static site generation. It helps organize and manage content. This allows us to connect static content with dynamic features, making it easier to build rich, flexible, and maintainable websites.</p>
+<p>Example:</p>
+<div style="background-color: #808080; padding: 15px; border-radius: 5px; text-align: left;">
+<pre><code class="language-html">--- 
+title: &quot;Front matter markdown&quot; 
+date: 2024-09-14 
+author: &quot;John Doe&quot; 
+tags: 
+	- &quot;web development&quot; 
+	- &quot;static site generators&quot; 
+	- &quot;markdown&quot; 
+layout: &quot;post&quot; 
+description: &quot;Example description.&quot; 
+---
+&lt;/div&gt;
+</code></pre>
+</div>
+        </div>
+
+    <!-- Pagination Controls -->
+    <nav>
+      <ul class="pagination">
+         <!-- Check if there is a previous page -->
+          <li class="page-item">
+            <a class="page-link" href="/blog/page/2/">Previous</a> <!-- Link to the previous page -->
+          </li>
+    
+         <!-- Loop through each page in the pagination -->
+          <li class="page-item "> <!-- Highlight the active page -->
+            <a class="page-link" href="/blog/page/0/">1</a> <!-- Page number link -->
+          </li>
+     <!-- Loop through each page in the pagination -->
+          <li class="page-item "> <!-- Highlight the active page -->
+            <a class="page-link" href="/blog/page/1/">2</a> <!-- Page number link -->
+          </li>
+     <!-- Loop through each page in the pagination -->
+          <li class="page-item "> <!-- Highlight the active page -->
+            <a class="page-link" href="/blog/page/2/">3</a> <!-- Page number link -->
+          </li>
+     <!-- Loop through each page in the pagination -->
+          <li class="page-item active"> <!-- Highlight the active page -->
+            <a class="page-link" href="/blog/page/3/">4</a> <!-- Page number link -->
+          </li>
+    
+              <li class="page-item disabled"> <!-- Disable the "Next" button if on the last page -->
+            <span class="page-link">Next</span>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+ <!-- Render the main page content dynamically -->
+    </div>
+
+    <footer class="site-footer">
+  <!-- The footer element that serves as the container for the footer content -->
+  <div class="footer-container">
+    <!-- A div container to wrap and style the footer content properly -->
+    <p>
+      &copy;
+      <span id="year"></span>
+      Shivam Janda.
+      <!-- The copyright symbol followed by a span where the current year will be dynamically injected -->
+      All rights reserved.
+      <a href="/pages/terms-and-conditions">Terms and Conditions</a>
+      <!-- A link to the Terms and Conditions page -->
+    </p>
+  </div>
+</footer>
+
+<script>
+  // This JavaScript code dynamically sets the current year in the footer.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script> <!-- Include the footer partial -->
+  </div>
+
+  <!-- External JS libraries (jQuery, Popper.js, Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

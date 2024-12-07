@@ -1,0 +1,50 @@
+---
+layout: layout.hbs
+pagination:
+  data: collections.blogPosts
+  size: 1
+  alias: post
+  addAllPagesToCollections: true
+  before: |
+    {% if query.category and query.category != "All" %}
+      collections.blogPosts.filter(item => item.category === query.category)
+    {% else %}
+      collections.blogPosts
+    {% endif %}
+permalink: "/blog/page/{{ pagination.pageNumber }}/index.html"
+---
+
+
+<section class="blog-section content">
+  <div class="container">
+    <h1>Blog Posts</h1>
+
+    <!-- Dropdown for Category Filtering -->
+    <form action="/blog/page/0/" method="GET">
+  <select name="category" onchange="this.form.submit()">
+    <option value="All" {{#if (eq query.category "All")}}selected{{/if}}>All Categories</option>
+    <option value="Labs" {{#if (eq query.category "Labs")}}selected{{/if}}>Labs</option>
+    <option value="Technology" {{#if (eq query.category "Technology")}}selected{{/if}}>Technology</option>
+    <option value="Fitness" {{#if (eq query.category "Fitness")}}selected{{/if}}>Fitness</option>
+  </select>
+</form>
+
+
+    <!-- Blog Post List -->
+    {{#if pagination.items.length}}
+      {{#each pagination.items}}
+        <div class="blog-post-card">
+          <h2 class="blog-title">{{ this.title }}</h2>
+          <p class="card-subtitle">Posted on: {{ this.date }}</p>
+          <p class="card-category">Category: {{ this.category }}</p>
+          <div class="card-text">{{{ markdownify this.content }}}</div>
+        </div>
+      {{/each}}
+    {{else}}
+      <p>No blog posts available for this category.</p>
+    {{/if}}
+
+    <!-- Pagination Controls -->
+    {{> pagination }}
+  </div>
+</section>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Define character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure proper scaling on mobile devices -->
+<link rel="stylesheet" href="/css/main.css">
+  <title></title> <!-- Dynamic page title -->
+</head>
+<body>
+
+  <div class="wrapper"> <!-- Main wrapper for the content -->
+    <div class="banner">
+      <div class="navbar">
+        <img src="/css/logo.png" class="logo">
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/about">About</a></li>
+    <li><a href="/pages/terms-and-conditions">Terms and Conditions</a></li>
+     <li><a href="/blog/page/0/">Blogs</a></li> 
+</ul>
+ <!-- Include the header partial (navigation) -->
+      </div>
+    </div>
+
+    <div class="content">
+      <section class="exercise-detail-section">
+  <div class="container exercise-container">
+
+    <!-- Display exercise image if available; otherwise, show a default image -->
+    <div class="exercise-image">
+      <img src="http://127.0.0.1:1337/uploads/deadlift_9e46378aae.jpg" alt="Deadlifts Exercise Image"
+        onerror="this.onerror=null; this.src='/css/default-exercise.png';">
+    </div>
+
+    <!-- Section for displaying exercise details -->
+    <div class="exercise-content">
+      <!-- Display the exercise name -->
+      <h1>Deadlifts</h1>
+
+      <!-- Display the exercise description -->
+      <p>Deadlifts are one of the most effective strength-building exercises, targeting the entire posterior chain, which includes the muscles along the backside of the body, such as the glutes, hamstrings, and lower back. This compound exercise also strengthens the core and upper body, making it a total-body workout. Deadlifts not only help improve posture by counteracting the effects of prolonged sitting, but they also enhance functional strength, making it easier to perform daily tasks like lifting heavy objects. Proper form is crucial to avoid injury, but when done correctly, deadlifts are an excellent way to build power and stability.</p>
+
+      <!-- Button to navigate back to the main workouts page -->
+      <div class="back-button">
+        <a href="/" class="button">Back to Workouts</a>
+      </div>
+    </div>
+
+  </div>
+</section> <!-- Render the main page content dynamically -->
+    </div>
+
+    <footer class="site-footer">
+  <!-- The footer element that serves as the container for the footer content -->
+  <div class="footer-container">
+    <!-- A div container to wrap and style the footer content properly -->
+    <p>
+      &copy;
+      <span id="year"></span>
+      Shivam Janda.
+      <!-- The copyright symbol followed by a span where the current year will be dynamically injected -->
+      All rights reserved.
+      <a href="/pages/terms-and-conditions">Terms and Conditions</a>
+      <!-- A link to the Terms and Conditions page -->
+    </p>
+  </div>
+</footer>
+
+<script>
+  // This JavaScript code dynamically sets the current year in the footer.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script> <!-- Include the footer partial -->
+  </div>
+
+  <!-- External JS libraries (jQuery, Popper.js, Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

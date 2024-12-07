@@ -1,0 +1,30 @@
+@use "uniform/core";
+@use "sass:map";
+
+$config: (
+  utilities: (
+    border-left-radius: (
+      important: false,
+      shorthand: radius-l,
+      responsive: true,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (border-top-left-radius, border-bottom-left-radius),
+      static-properties: (),
+      variants: (
+        core.merge(
+          core.radiuses(),
+          (
+            none: 0,
+            full: 9999px
+          )
+        )
+      ),
+      pseudos: (
+        first
+      )
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

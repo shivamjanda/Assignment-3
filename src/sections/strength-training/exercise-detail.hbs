@@ -1,0 +1,37 @@
+---
+layout: layout.hbs
+pagination:
+  data: collections.strengthTrainingExercises
+  size: 1
+  alias: exercise
+permalink: "/workouts/strength-training/exercises/{{ exercise.exerciseSlug }}/index.html"
+---
+<section class="exercise-detail-section">
+  <div class="container exercise-container">
+
+    <!-- Display exercise image if available; otherwise, show a default image -->
+    <div class="exercise-image">
+      {{#if exercise.image}}
+      <img src="{{ exercise.image }}" alt="{{ exercise.name }} Exercise Image"
+        onerror="this.onerror=null; this.src='/css/default-exercise.png';">
+      {{else}}
+      <img src="/css/default-exercise.png" alt="Default Exercise Image">
+      {{/if}}
+    </div>
+
+    <!-- Section for displaying exercise details -->
+    <div class="exercise-content">
+      <!-- Display the exercise name -->
+      <h1>{{ exercise.name }}</h1>
+
+      <!-- Display the exercise description -->
+      <p>{{ exercise.description }}</p>
+
+      <!-- Button to navigate back to the main workouts page -->
+      <div class="back-button">
+        <a href="/" class="button">Back to Workouts</a>
+      </div>
+    </div>
+
+  </div>
+</section>

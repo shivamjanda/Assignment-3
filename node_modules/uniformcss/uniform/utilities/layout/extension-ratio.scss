@@ -1,0 +1,46 @@
+@use "uniform/core";
+@use "sass:map";
+
+$config: (
+  utilities: (
+    ratio: (
+      important: false,
+      shorthand: ratio,
+      responsive: true,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (),
+      static-properties: (),
+      variants: (
+        square: (
+          position: relative,
+          width: 100%,
+          padding-top: 100%,
+        ),
+        '16-9': (
+          position: relative,
+          width: 100%,
+          padding-top: 56.25%,
+        ),
+        '4-3': (
+          position: relative,
+          width: 100%,
+          padding-top: 75%,
+        ),
+        '2-1': (
+          position: relative,
+          width: 100%,
+          padding-top: 50%,
+        ),
+        '16-10': (
+          position: relative,
+          width: 100%,
+          padding-top: 63%,
+        )
+      ),
+      pseudos: (none)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

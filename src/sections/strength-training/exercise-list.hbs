@@ -1,0 +1,47 @@
+---
+layout: layout.hbs
+pagination:
+  data: collections.strengthTrainingExercises
+  size: 1
+  alias: exercise
+permalink: "/workouts/strength-training/exercises/page/{{ add pagination.pageNumber 1 }}/index.html"
+---
+
+<section class="strength-section">
+  <div class="container">
+
+
+    <!-- Section Header for Strength Training Exercises -->
+    <div class="header">
+      <h1>Strength Training Exercises</h1>
+    </div>
+
+
+    <!-- Check if there are exercises to display -->
+    {{#if exercise}}
+    <div class="exercise-list">
+
+      <!-- Display the exercise name as a button linking to its detailed page -->
+      <div class="exercise-name">
+        <a href="/workouts/strength-training/exercises/{{ exercise.exerciseSlug }}/"
+          class="glow-exercise-button hover-animate">
+          {{ exercise.name }}
+        </a>
+      </div>
+
+      <!-- Display the description of the exercise -->
+      <div class="exercise-description">
+        <p>{{ exercise.description }}</p>
+      </div>
+
+      {{else}}
+      <!-- Fallback message if no exercises are found -->
+      <div class="no-exercises">
+        <p>No Strength Training exercises available at the moment.</p>
+      </div>
+      {{/if}}
+
+      <!-- Include pagination controls for navigating between exercises -->
+      {{> pagination }}
+    </div>
+</section>

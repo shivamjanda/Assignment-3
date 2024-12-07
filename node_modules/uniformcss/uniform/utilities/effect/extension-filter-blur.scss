@@ -1,0 +1,22 @@
+@use "uniform/core";
+@use "sass:map";
+
+$config: (
+  utilities: (
+    filter-blur: (
+      important: false,
+      shorthand: filter-blur,
+      responsive: false,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (--filter-blur),
+      static-properties: (),
+      variants: (
+        core.getBlurs()
+      ),
+      pseudos: (none)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

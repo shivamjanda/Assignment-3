@@ -1,0 +1,27 @@
+@use "uniform/core";
+@use "sass:map";
+
+$config: (
+  utilities: (
+    backdrop-hue-rotate: (
+      important: false,
+      shorthand: backdrop-hue-rotate,
+      responsive: false,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (--backdrop-hue-rotate),
+      static-properties: (),
+      variants: (
+        0: 0deg,
+        15: 15deg,
+        30: 30deg,
+        60: 60deg,
+        90: 90deg,
+        180: 180deg
+      ),
+      pseudos: (none)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

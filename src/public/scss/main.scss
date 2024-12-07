@@ -1,0 +1,984 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  /* Allow body to expand based on content */
+}
+
+
+.wrapper {
+  min-height: 100vh;
+  /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  /* Stacks content vertically */
+}
+
+
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../css/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* Content should grow to fill available space */
+.content {
+  flex: 1;
+  /* Pushes the footer to the bottom */
+}
+
+.logo {
+  width: 100px;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+.banner {
+  width: 100%;
+  height: 20vh;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+/* Navbar Styles */
+.navbar {
+  width: 100%;
+  /* Ensure it spans the full width */
+  position: fixed;
+  /* Make sure it stays fixed at the top */
+  top: 0;
+  /* Align the navbar to the top */
+  left: 0;
+  /* Ensure it starts from the left of the screen */
+  z-index: 1000;
+  /* Keep it above other content */
+  background-color: rgba(0, 0, 0, 0);
+  /* Slight transparency for background */
+  padding: 15px 0;
+  /* Adjust the padding to fit the content */
+
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: -50px;
+
+
+    li {
+      list-style: none;
+      display: inline-block;
+      margin: 0 20px;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+      }
+
+      &::after {
+        content: '';
+        height: 3px;
+        width: 0;
+        background: #009688;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        transition: 0.5s;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    padding: 20px 0;
+    /* Adjust the padding for larger screens */
+  }
+}
+
+/* Content Section */
+.content {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin-top: 50px;
+  /* Set a margin that matches or slightly exceeds the height of the navbar */
+
+  color: #fff;
+
+  h1 {
+    font-size: 50px;
+    margin-top: 80px;
+  }
+
+  p {
+    margin: 20px auto;
+    font-weight: 100;
+    line-height: 25px;
+  }
+}
+
+.lab2-content-container {
+  max-width: 800px;
+  margin: 100px auto;
+  /* Center content horizontally and add space from top */
+  padding: 20px;
+  background-color: #1a1a1a;
+  /* Dark grey for contrast against black background */
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  color: #f5f5f5;
+  /* Light grey text for readability */
+}
+
+.lab2-content-container h1,
+.lab2-content-container h2,
+.lab2-content-container h3 {
+  color: #ffffff;
+  /* White headers for contrast */
+  margin-bottom: 20px;
+}
+
+.lab2-content-container p {
+  color: #d3d3d3;
+  /* Light grey for paragraphs */
+  line-height: 1.8;
+  margin-bottom: 16px;
+  /* Consistent spacing for paragraphs */
+}
+
+.lab2-content-container ul,
+.lab2-content-container ol {
+  margin-bottom: 16px;
+  padding-left: 20px;
+  /* Indentation for lists */
+}
+
+.lab2-content-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  /* Center images with spacing */
+}
+
+.blog-section {
+  &.content {
+    .container {
+      max-width: 800px; // This is fine, it sets the max width of the container.
+      margin: auto; // Centers the container.
+    }
+  }
+}
+
+.blog-title {
+  text-align: center; // Keeps the blog title centered.
+}
+
+.blog-post-card {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+  color: #f5f5f5;
+  margin: 20px 0;
+  border: 0.1px solid #444;
+
+  // Ensure that the container height adjusts dynamically
+  height: auto; // Makes sure the height grows with content (height:auto is the default, but just to make it explicit).
+  overflow: visible; // Ensures that all content is shown and nothing is clipped.
+
+  h2 {
+    a {
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {
+        color: #009688; // Add a hover effect to make it more engaging.
+      }
+    }
+  }
+
+  .card-subtitle {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+  }
+
+  .card-text {
+    line-height: 1.6;
+    overflow: visible; // Ensure content like images or large elements are shown without clipping.
+  }
+}
+
+
+/* Navbar Styles within Banner */
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Semi-transparent background for consistency */
+  padding: 20px 0;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.navbar li {
+  list-style: none;
+  margin: 0 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+}
+
+
+
+/* Button Styles */
+.button {
+  width: 200px;
+  padding: 15px 0;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: 2px solid #009688;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  /* Initially hidden */
+  transform: translateX(-50px);
+  /* Initially shifted to the left */
+  animation: fade-in-left 1s forwards ease-in-out;
+  /* Animation applied */
+}
+
+/* Apply animation delays for each button */
+.button:nth-child(1) {
+  animation-delay: 0.5s;
+  /* Delay for first button */
+}
+
+.button:nth-child(2) {
+  animation-delay: 1s;
+  /* Delay for second button */
+}
+
+.button:nth-child(3) {
+  animation-delay: 1.5s;
+  /* Delay for third button */
+}
+
+/* Hover Effects for Buttons */
+.button .span {
+  background-color: #009688;
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.button:hover .span {
+  width: 100%;
+}
+
+.button:hover {
+  border: none;
+}
+
+/* Glow Effect for the Cardio Page "See Cardio Exercises" Button */
+.glow-exercise-button {
+  width: 200px;
+  padding: 15px 0;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #009688;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 0 0px rgba(0, 255, 0, 0.7);
+  /* Initial no glow */
+}
+
+.glow-exercise-button .span {
+  background-color: #009688;
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: width 0.5s ease-in-out;
+}
+
+.glow-exercise-button:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+  /* Glow effect on hover */
+}
+
+.glow-exercise-button:hover .span {
+  width: 100%;
+  /* Expand span width on hover */
+}
+
+.glow-exercise-button:hover {
+  border: none;
+}
+
+/* About Section Horizontal Layout */
+.about-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../css/background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding-top: 120px;
+  /* Add padding to prevent overlap with the fixed navbar */
+  padding-bottom: 100px;
+  color: white;
+  text-align: center;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  /* Header animation */
+  .about-header {
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fade-in-down 1.5s forwards ease-in-out;
+
+    .about-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 40px;
+      animation-delay: 0.3s;
+      /* Staggered animation */
+    }
+  }
+
+  /* About content layout */
+  .about-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+
+    .about-column {
+      flex: 1;
+      max-width: 350px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fade-in-up 1.5s forwards ease-in-out;
+      animation-delay: 0.5s;
+      /* Staggered animation for columns */
+
+      .about-subtitle {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #ddd;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 0.7s;
+        /* Delay second column */
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.9s;
+        /* Delay third column */
+      }
+    }
+
+    /* Contact Information */
+    .contact {
+      a {
+        color: #009688;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+/* Cardio Section */
+.cardio-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../css/background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  color: white;
+  text-align: center;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .header {
+    margin-bottom: 70px;
+    /* Increase margin between the header and the button */
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fade-in-left 1s forwards ease-in-out;
+      /* Header fade-in from top */
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 60px;
+      /* Ensure there's space between the text and the buttons */
+      opacity: 0;
+      animation-delay: 0.5s;
+      /* Delay for the paragraph */
+      animation: fade-in-down 1s forwards ease-in-out;
+    }
+  }
+
+  .exercise-name a {
+    opacity: 0;
+    animation: fade-in-left 1s forwards ease-in-out;
+    /* Button fade-in from left */
+    animation-delay: 1s;
+    /* Delay for the button */
+    text-decoration: none;
+  }
+
+  .button {
+    text-decoration: none;
+    /* Remove underline */
+    margin-top: 40px;
+    /* Add space above the buttons */
+    overflow: hidden;
+    opacity: 0;
+    /* Initially hidden */
+    transform: translateX(-50px);
+    /* Initially shifted to the left */
+    animation: fade-in-left 1s forwards ease-in-out;
+    /* Animation applied */
+  }
+}
+
+/* Yoga Section */
+.yoga-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../css/background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  color: white;
+  text-align: center;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .header {
+    margin-bottom: 70px;
+    /* Increase margin between the header and the button */
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fade-in-left 1s forwards ease-in-out;
+      /* Header fade-in from top */
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 60px;
+      /* Ensure there's space between the text and the buttons */
+      opacity: 0;
+      animation-delay: 0.5s;
+      /* Delay for the paragraph */
+      animation: fade-in-down 1s forwards ease-in-out;
+    }
+  }
+
+  .exercise-name a {
+    opacity: 0;
+    animation: fade-in-left 1s forwards ease-in-out;
+    /* Button fade-in from left */
+    animation-delay: 1s;
+    /* Delay for the button */
+    text-decoration: none;
+  }
+
+  .button {
+    text-decoration: none;
+    /* Remove underline */
+    margin-top: 40px;
+    /* Add space above the buttons */
+    overflow: hidden;
+    opacity: 0;
+    /* Initially hidden */
+    transform: translateX(-50px);
+    /* Initially shifted to the left */
+    animation: fade-in-left 1s forwards ease-in-out;
+    /* Animation applied */
+  }
+}
+
+/* Strength Training Section */
+.strength-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../css/background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  color: white;
+  text-align: center;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .header {
+    margin-bottom: 70px;
+    /* Increase margin between the header and the button */
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fade-in-left 1s forwards ease-in-out;
+      /* Header fade-in from top */
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 60px;
+      /* Ensure there's space between the text and the buttons */
+      opacity: 0;
+      animation-delay: 0.5s;
+      /* Delay for the paragraph */
+      animation: fade-in-down 1s forwards ease-in-out;
+    }
+  }
+
+  .exercise-name a {
+    opacity: 0;
+    animation: fade-in-left 1s forwards ease-in-out;
+    /* Button fade-in from left */
+    animation-delay: 1s;
+    /* Delay for the button */
+    text-decoration: none;
+  }
+
+  .button {
+    text-decoration: none;
+    /* Remove underline */
+    margin-top: 40px;
+    /* Add space above the buttons */
+    overflow: hidden;
+    opacity: 0;
+    /* Initially hidden */
+    transform: translateX(-50px);
+    /* Initially shifted to the left */
+    animation: fade-in-left 1s forwards ease-in-out;
+    /* Animation applied */
+  }
+}
+
+/* Exercise Detail Section */
+.exercise-detail-section {
+  padding: 50px 0;
+}
+
+.exercise-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  animation: fade-in-top 1.5s forwards ease-in-out;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.exercise-image {
+  flex: 1;
+  max-width: 50%;
+  text-align: center;
+  animation: slide-in-left 1.5s forwards ease-in-out;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+}
+
+.exercise-content {
+  flex: 1;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fade-in-top 1.5s forwards ease-in-out;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
+  .header {
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+  }
+
+  .back-button .button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .back-button .span {
+    background-color: #009688;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+    text-decoration: none;
+  }
+
+  .back-button .button:hover .span {
+    width: 100%;
+    text-decoration: none;
+  }
+
+  .back-button .button:hover {
+    border: none;
+  }
+}
+
+/* Keyframes for Image Sliding In */
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Keyframes for Text Fading In from Top */
+@keyframes fade-in-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes for Header Text Fading In from Top */
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pagination Styles */
+nav .pagination {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  padding: 30px 0;
+  /* Increased padding between content and pagination */
+  list-style-type: none;
+
+  .page-item {
+    margin: 0 5px;
+    list-style: none;
+    text-decoration: none;
+
+
+    .page-link {
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      background-color: transparent;
+      color: white;
+      border: 2px solid #009688;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .disabled .page-link {
+      border-color: #555;
+      color: #555;
+      text-decoration: none;
+
+    }
+
+    &:hover .page-link {
+      background-color: #009688;
+      color: white;
+      text-decoration: none;
+
+    }
+
+    &.active .page-link {
+      background-color: #009688;
+      color: white;
+      border: none;
+      text-decoration: none;
+
+    }
+  }
+}
+
+/* Wrapper should take full height */
+.wrapper {
+  min-height: 100vh;
+  /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  /* Stacks content vertically */
+}
+
+/* Content should grow to fill available space */
+.content {
+  flex: 1;
+  /* Fills available space, pushing footer to the bottom */
+}
+
+/* Footer Styles */
+.site-footer {
+  background-color: gray;
+  padding: 30px 0;
+  text-align: center;
+  color: white;
+  width: 100%;
+  position: relative;
+  /* Ensure footer stays at the bottom */
+  bottom: 0;
+  /* Aligns to the bottom */
+  left: 0;
+  /* Sticks footer to the bottom edge */
+  flex-shrink: 0;
+  /* Prevents footer from shrinking */
+
+  a {
+    color: #009688;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer p {
+    font-size: 14px;
+  }
+
+  .lab2-content-container {
+    margin: 80px auto;
+  }
+}
+
+/* Terms and Conditions Styles */
+.terms-and-conditions {
+  font-size: 14px;
+  /* Reduced font size */
+  line-height: 1.5;
+  /* Slightly increased line height */
+  color: #fff;
+  /* Ensure the text is visible on the dark background */
+
+  h1 {
+    font-size: 28px;
+    /* Smaller heading size */
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 14px;
+    /* Reduced paragraph font size */
+    margin-bottom: 10px;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
+  /* Reduce space between terms to fit better */
+  .term-item {
+    margin-bottom: 15px;
+    /* Reduced space between term sections */
+  }
+}
+
+/* Keyframes for the animation */
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+    /* Start position (shifted left) */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    /* End position (original position) */
+  }
+}
+
+/* Keyframes for fade-in animations */
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

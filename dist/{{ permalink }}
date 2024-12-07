@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Define character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure proper scaling on mobile devices -->
+<link rel="stylesheet" href="/css/main.css">
+  <title>{{ title }}</title> <!-- Dynamic page title -->
+</head>
+<body>
+
+  <div class="wrapper"> <!-- Main wrapper for the content -->
+    <div class="banner">
+      <div class="navbar">
+        <img src="/css/logo.png" class="logo">
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/about">About</a></li>
+    <li><a href="/pages/terms-and-conditions">Terms and Conditions</a></li>
+     <li><a href="/blog/page/0/">Blogs</a></li> 
+</ul>
+ <!-- Include the header partial (navigation) -->
+      </div>
+    </div>
+
+    <div class="content">
+      <h1>{{ title }}</h1> <!-- Displays the page title -->
+<p></p> <!-- Displays the page description -->
+
+
+<!-- Workout Section -->
+<div class="workout-section">
+  <h1></h1> <!-- Displaying the name of the workout -->
+  <p></p> <!-- Displaying the description of the workout -->
+
+  <!-- Button to see the exercises related to this workout -->
+  <a href="/workouts//exercises/" class="btn btn-primary">
+    See  Exercises <!-- Dynamically generated text for the button -->
+  </a>
+</div> <!-- Render the main page content dynamically -->
+    </div>
+
+    <footer class="site-footer">
+  <!-- The footer element that serves as the container for the footer content -->
+  <div class="footer-container">
+    <!-- A div container to wrap and style the footer content properly -->
+    <p>
+      &copy;
+      <span id="year"></span>
+      Shivam Janda.
+      <!-- The copyright symbol followed by a span where the current year will be dynamically injected -->
+      All rights reserved.
+      <a href="/pages/terms-and-conditions">Terms and Conditions</a>
+      <!-- A link to the Terms and Conditions page -->
+    </p>
+  </div>
+</footer>
+
+<script>
+  // This JavaScript code dynamically sets the current year in the footer.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script> <!-- Include the footer partial -->
+  </div>
+
+  <!-- External JS libraries (jQuery, Popper.js, Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

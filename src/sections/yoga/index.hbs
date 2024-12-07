@@ -1,0 +1,40 @@
+---
+layout: layout.hbs
+title: "Yoga Workouts"
+permalink: "/sections/yoga/index.html"
+---
+
+<section class="yoga-section">
+  <div class="container">
+    <!-- Section Header for Yoga Workouts -->
+    {{#if collections.yogaWorkoutsCollection.[0]}}
+    <div class="yoga-header">
+      <!-- Display the title of the first yoga workout in the collection if available -->
+      <h1>{{ collections.yogaWorkoutsCollection.[0].title }}</h1>
+
+      <!-- Display the description of the first yoga workout in the collection if available -->
+      <p>{{ collections.yogaWorkoutsCollection.[0].description }}</p>
+    </div>
+    {{else}}
+    <!-- If no yoga workouts are available, display a fallback message -->
+    <div class="yoga-header">
+      <h1>Yoga Workouts</h1>
+      <p>No Yoga data available at the moment.</p>
+    </div>
+    {{/if}}
+
+    <!-- Button linking to the yoga exercises page, with pagination starting from page 1 -->
+    <a href="/workouts/yoga/exercises/page/1/">
+      <button type="button" class="glow-exercise-button">
+        <span class="span"></span> See Yoga Exercises <!-- Button text -->
+      </button>
+    </a>
+
+    <!-- Button to navigate back to the main workout sections page -->
+    <a href="/">
+      <button type="button" class="glow-exercise-button">
+        <span class="span"></span> Back to Workout Sections <!-- Button text -->
+      </button>
+    </a>
+  </div>
+</section>

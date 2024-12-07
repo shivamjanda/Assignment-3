@@ -1,0 +1,20 @@
+<footer class="site-footer">
+  <!-- The footer element that serves as the container for the footer content -->
+  <div class="footer-container">
+    <!-- A div container to wrap and style the footer content properly -->
+    <p>
+      &copy;
+      <span id="year"></span>
+      Shivam Janda.
+      <!-- The copyright symbol followed by a span where the current year will be dynamically injected -->
+      All rights reserved.
+      <a href="/pages/terms-and-conditions">Terms and Conditions</a>
+      <!-- A link to the Terms and Conditions page -->
+    </p>
+  </div>
+</footer>
+
+<script>
+  // This JavaScript code dynamically sets the current year in the footer.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>

@@ -1,0 +1,44 @@
+---
+layout: layout.hbs
+pagination:
+  data: collections.yogaExercises
+  size: 1
+  alias: exercise
+permalink: "/workouts/yoga/exercises/page/{{ add pagination.pageNumber 1 }}/index.html"
+---
+
+<section class="yoga-section">
+  <div class="container">
+
+    <!-- Section Header for Yoga Exercises -->
+    <div class="header">
+      <h1>Yoga Exercises</h1>
+    </div>
+
+    <!-- Check if there are yoga exercises to display -->
+    {{#if exercise}}
+    <div class="exercise-list">
+
+      <!-- Display the exercise name as a button linking to its detailed page -->
+      <div class="exercise-name">
+        <a href="/workouts/yoga/exercises/{{ exercise.exerciseSlug }}/" class="glow-exercise-button hover-animate">
+          {{ exercise.name }}
+        </a>
+      </div>
+
+      <!-- Display the description of the exercise -->
+      <div class="exercise-description">
+        <p>{{ exercise.description }}</p>
+      </div>
+
+      {{else}}
+      <!-- Fallback message if no yoga exercises are found -->
+      <div class="no-exercises">
+        <p>No yoga exercises available at the moment.</p>
+      </div>
+      {{/if}}
+
+      <!-- Include pagination controls for navigating between exercises -->
+      {{> pagination }}
+    </div>
+</section>

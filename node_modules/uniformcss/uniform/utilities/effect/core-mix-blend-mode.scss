@@ -1,0 +1,37 @@
+@use "uniform/core";
+@use "sass:map";
+
+$config: (
+  utilities: (
+    mix-blend-mode: (
+      important: false,
+      shorthand: blend,
+      responsive: false,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (mix-blend-mode),
+      static-properties: (),
+      variants: (
+        normal: normal,
+        multiply: multiply,
+        screen: screen,
+        overlay: overlay,
+        darken: darken,
+        lighten: lighten,
+        color-dodge: color-dodge,
+        color-burn: color-burn,
+        hard-light: hard-light,
+        soft-light: soft-light,
+        difference: difference,
+        exclusion: exclusion,
+        hue: hue,
+        saturation: saturation,
+        color: color,
+        luminosity: luminosity,
+      ),
+      pseudos: (none)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

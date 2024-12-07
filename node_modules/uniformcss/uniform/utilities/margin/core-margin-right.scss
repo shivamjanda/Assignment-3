@@ -1,0 +1,30 @@
+@use "uniform/core";
+@use "sass:map";
+
+$range-limit: map.get(core.$all-config, range-limits, margin);
+
+$config: (
+  utilities: (
+    margin-right: (
+      important: false,
+      shorthand: mr,
+      responsive: true,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (margin-right),
+      static-properties: (),
+      variants: (
+        core.merge(
+          core.sizes($range-limit),
+          (
+            auto: auto,
+            0: 0,
+          )
+        )
+      ),
+      pseudos: (first, last)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

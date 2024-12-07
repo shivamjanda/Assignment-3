@@ -1,0 +1,19 @@
+---
+layout: layout.hbs
+title: "{{ title }}"
+permalink: "{{ permalink }}"
+---
+<h1>{{ title }}</h1> <!-- Displays the page title -->
+<p>{{ description }}</p> <!-- Displays the page description -->
+
+
+<!-- Workout Section -->
+<div class="workout-section">
+  <h1>{{ workout.title }}</h1> <!-- Displaying the name of the workout -->
+  <p>{{ workout.description }}</p> <!-- Displaying the description of the workout -->
+
+  <!-- Button to see the exercises related to this workout -->
+  <a href="/workouts/{{ workout.slug }}/exercises/" class="btn btn-primary">
+    See {{ workout.title }} Exercises <!-- Dynamically generated text for the button -->
+  </a>
+</div>

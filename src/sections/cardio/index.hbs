@@ -1,0 +1,44 @@
+---
+layout: layout.hbs
+title: "Cardio Workouts"
+permalink: "/sections/cardio/index.html"
+---
+
+<section class="cardio-section">
+  <div class="container">
+
+    <!-- Cardio Header Section -->
+    <div class="cardio-header">
+      {{#if collections.cardioWorkoutsCollection.length}}
+      <!-- Iterate through each cardio workout in the collection if data is available -->
+      {{#each collections.cardioWorkoutsCollection}}
+      <h1>{{title}}</h1> <!-- Display the title of each cardio workout -->
+
+      <!-- Display the description of each cardio workout -->
+      <p>{{description}}</p>
+      {{/each}}
+      {{else}}
+      <!-- If no cardio workout data is available, display a fallback message -->
+      <h1>Cardio Workouts</h1>
+      <p>No cardio workout data available at the moment.</p>
+      {{/if}}
+    </div>
+
+    <!-- Button to navigate to cardio exercises, starting with page 1 -->
+    <a href="/workouts/cardio/exercises/page/1/">
+      <button type="button" class="glow-exercise-button">
+        <span class="span"></span> <!-- Span for hover effect -->
+        See Cardio Exercises <!-- Button text for navigating to the exercises -->
+      </button>
+    </a>
+
+    <!-- Button to navigate back to the main workout sections page -->
+    <a href="/">
+      <button type="button" class="glow-exercise-button">
+        <span class="span"></span> <!-- Span for hover effect -->
+        Back to Workout Sections <!-- Button text for going back to the main sections -->
+      </button>
+    </a>
+
+  </div>
+</section>

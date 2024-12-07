@@ -1,0 +1,22 @@
+@use "uniform/core";
+@use "sass:map";
+
+$config: (
+  utilities: (
+    color-opacity: (
+      important: false,
+      shorthand: color-opacity,
+      responsive: false,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (--color-opacity),
+      static-properties: (),
+      variants: (
+        core.opacities()
+      ),
+      pseudos: (hover, group-hover, focus)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

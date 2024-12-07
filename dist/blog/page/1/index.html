@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Define character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure proper scaling on mobile devices -->
+<link rel="stylesheet" href="/css/main.css">
+  <title></title> <!-- Dynamic page title -->
+</head>
+<body>
+
+  <div class="wrapper"> <!-- Main wrapper for the content -->
+    <div class="banner">
+      <div class="navbar">
+        <img src="/css/logo.png" class="logo">
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/about">About</a></li>
+    <li><a href="/pages/terms-and-conditions">Terms and Conditions</a></li>
+     <li><a href="/blog/page/0/">Blogs</a></li> 
+</ul>
+ <!-- Include the header partial (navigation) -->
+      </div>
+    </div>
+
+    <div class="content">
+      
+
+<section class="blog-section content">
+  <div class="container">
+    <h1>Blog Posts</h1>
+
+    <!-- Dropdown for Category Filtering -->
+    <form action="/blog/page/0/" method="GET">
+  <select name="category" onchange="this.form.submit()">
+    <option value="All" >All Categories</option>
+    <option value="Labs" >Labs</option>
+    <option value="Technology" >Technology</option>
+    <option value="Fitness" >Fitness</option>
+  </select>
+</form>
+
+
+    <!-- Blog Post List -->
+        <div class="blog-post-card">
+          <h2 class="blog-title">Lab 2 Documentation:  Headless CMS Integration Documentation for Lab 2</h2>
+          <p class="card-subtitle">Posted on: Fri Nov 08 2024 00:45:00 GMT-0500 (Eastern Standard Time)</p>
+          <p class="card-category">Category: Labs</p>
+          <div class="card-text"><p> </p>
+<h2>Introduction</h2>
+<hr>
+<p><br/><br/>
+This document covers the integration of two headless CMS systems into my workout-themed project for Lab 2. The purpose is to explore, experiment, and compare different headless CMS options. The two CMS options that I decided to explore with are <strong>Strapi</strong> and <strong>Contentful</strong>. This documentation shows my research, experimentation, and final evaluation of these CMS platforms to determine the best fit for my project.
+<br/><br/></p>
+<h2>CMS Options Explored</h2>
+<hr>
+<p><br/><br/></p>
+<p>In this lab, I explored two CMS platforms:
+<br/><br/></p>
+<ol>
+<li><strong>Strapi</strong> - A self-hosted, open-source headless CMS known for its flexibility and customization.</li>
+<li><strong>Contentful</strong> - A cloud-based, managed headless CMS that focuses on ease of use and a fully managed environment.</li>
+</ol>
+<p><br/><br/>
+The selection of these CMS platforms was based on their popularity, feature set, and ability to fulfill the needs of my workout-themed web project.
+Below, I provide a detailed overview of the integration process for each CMS, including screenshots, code snippets, and my final analysis.
+<br/><br/></p>
+<h2>Strapi Integration</h2>
+<hr>
+<p><br/><br/>
+Strapi was the first CMS I integrated into my project. I chose Strapi because it provides a high level of control over content modeling and customization. Strapi is open-source, making it suitable for projects where self-hosting is preferred.
+<br/><br/></p>
+<h2>Setup and Configuration</h2>
+<hr>
+<p><br/><br/></p>
+<h3>Step 1: Installing Strapi</h3>
+<p><br/><br/></p>
+<p>I installed Strapi locally by running the following command:
+<br/><br/></p>
+<pre><code class="language-sh">npx create-strapi-app my-project --quickstart
+</code></pre>
+<p><br/><br/></p>
+<p>This set up a default Strapi instance, allowing me to start defining content types quickly.
+<br/><br/></p>
+<h3>Step 2: Creating Content Types</h3>
+<p><br/><br/></p>
+<p>I created a content type called <strong>Exercise</strong> with fields including:
+<br/><br/></p>
+<ul>
+<li><strong>Name</strong> (Text)</li>
+<li><strong>Slug</strong> (Text)</li>
+<li><strong>Description</strong> (Rich Text)</li>
+<li><strong>Image</strong> (Media)
+<br/><br/></li>
+</ul>
+<p>I added entries for exercises like <strong>Cycling</strong>, <strong>Squats</strong>, <strong>Warrior Pose</strong>, and other necessary entries according to Assignment 1 to demonstrate Strapi's capabilities. Similarly, I created a content type called <strong>Workouts</strong> for my three sections: Cardio, Strength Training, and Yoga.
+<br/><br/></p>
+<h3>Step 3: Fetching Data from Strapi</h3>
+<p><br/><br/></p>
+<p>I updated my Eleventy configuration (<code>eleventy.config.js</code>) to connect to the Strapi API and fetch the exercise data. Here is a code snippet example for my Cardio exercises collection:
+<br/><br/></p>
+<div style="background-color: #808080; padding: 15px; border-radius: 5px; text-align: left;">
+<pre><code class="language-javascript">eleventyConfig.addCollection(&quot;cardioExercises&quot;, async function() {
+  try {
+  const response = 
+  await axios.get(&quot;http://127.0.0.1:1337/api/exercises?filters[workout][Slug][$eq]=cardio&quot;
+  , { timeout: 5000 });
+    return response.data.data.map((exercise) =&gt; {
+      return {
+        name: exercise.Name,
+        slug: exercise.Slug,
+        description: exercise.Description?.[0]??.children?.[0]?.text || &quot;No description available&quot;,
+        image: exercise.Image?.[0]?.url ? `http://127.0.0.1:1337${exercise.Image[0].url}` : null,
+      };
+    });
+  } catch (error) {
+    console.error(&quot;Failed to fetch cardio exercises from Strapi:&quot;, error);
+    return [];
+  }
+});
+</code></pre>
+</div> 
+<br/><br/>
+<h3>Step 4: Displaying Data in Templates</h3>
+<p><br/><br/></p>
+<p>I modified the Handlebars templates to display the fetched data, showing the name, description, and image for each exercise.
+<br/><br/></p>
+<h2>Screenshots for Strapi Documentation</h2>
+<hr>
+<p><br/><br/></p>
+<div style="text-align: center; margin-bottom: 20px;">
+  <b>Screenshot 1: Being able to install Strapi and get it to run.</b>
+  <br/><br/>
+  <img src="/css/screenshot1.jpg" alt="Screenshot 1" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+  <b>Screenshot 2: Setting up the type of content for the "Workout" sections of my website.</b>
+  <br/><br/>
+  <img src="/css/screenshot8.jpg" alt="Screenshot 2" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+  <b>Screenshot 3: Creating content for the "Exercises" section of my website.</b>
+  <br/><br/>
+  <img src="/css/screenshot3.jpg" alt="Screenshot 3" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+  <b>Screenshot 4: Adding content in the "Exercises" collection.</b>
+  <br/><br/>
+  <img src="/css/screenshot4.jpg" alt="Screenshot 4" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+  <b>Screenshot 5: Configuring Strapi API for Cardio exercises in `eleventy.config.js`.</b>
+  <img src="/css/screenshot6.jpg" alt="Screenshot 5" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+  <b>Screenshot 6: Retrieving the "Cardio" collection data.</b>
+  <br/><br/>
+  <img src="/css/screenshot6.jpg" alt="Screenshot 6" width="700" style="display: block; margin: 0 auto;">
+</div>
+<p><br/><br/></p>
+<h2>Contentful Integration</h2>
+<p><br/><br/></p>
+<p>After experimenting with Strapi, I decided to explore <strong>Contentful</strong> to compare it with <strong>Strapi</strong>.
+<br/><br/></p>
+<h2>Setup and Configuration</h2>
+<hr>
+<p><br/><br/></p>
+<h3>Step 1: Creating a Contentful Account</h3>
+<p><br/><br/></p>
+<p>I created a free Contentful account and set up a new space called <strong>Exercises</strong>.
+<br/><br/></p>
+<h3>Step 2: Creating Content Types</h3>
+<p><br/><br/></p>
+<p>I created an <strong>Exercise</strong> content type similar to Strapi, with fields including:
+<br/><br/></p>
+<ul>
+<li><strong>Name</strong> (Short Text)</li>
+<li><strong>Slug</strong> (Short Text)</li>
+<li><strong>Description</strong> (Rich Text)</li>
+<li><strong>Image</strong> (Media)
+<br/><br/></li>
+</ul>
+<h3>Step 3: Adding Content</h3>
+<p><br/><br/></p>
+<p>I added entries for exercises (same as for Strapi), such as <strong>Running</strong> and <strong>Downward Dog</strong>.</p>
+<p><br/><br/></p>
+<h3>Step 4: Connecting Contentful to Eleventy</h3>
+<p><br/><br/></p>
+<p>I used the Contentful SDK to fetch data for my Eleventy project, updating <code>eleventy.config.js</code> as follows:
+<br/><br/></p>
+<div style="background-color: #808080; padding: 15px; border-radius: 5px; text-align: left;">
+<pre><code class="language-javascript">
+const contentful = require(&quot;contentful&quot;);
+
+const client = contentful.createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+});
+
+eleventyConfig.addCollection(&quot;contentfulExercises&quot;, async function() {
+  try {
+    const entries = await client.getEntries({
+      content_type: &quot;exercise&quot;,
+    });
+    return entries.items.map((item) =&gt; {
+      return {
+        name: item.fields.name,
+        slug: item.fields.slug,
+        description: item.fields.description,
+        image: item.fields.image ? item.fields.image.fields.file.url : null,
+      };
+    });
+  } catch (error) {
+    console.error(&quot;Failed to fetch data from Contentful:&quot;, error);
+    return [];
+  }
+});
+</code></pre>
+</div>
+<br/><br/>
+<h2>Screenshots for Contentful Documentation</h2>
+<hr>
+<p><br/><br/></p>
+<div style="text-align: center; margin-bottom: 20px;">
+  <b>Screenshot 1: Contentful dashboard showing the **Exercises** space.</b>
+  <br/><br/>
+  <img src="/css/screenshot7.jpg" alt="Screenshot 1" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+   <b>Screenshot 2: Sample entries for exercises such as **Running** and **Warrior Pose**.</b>
+   <br/><br/>
+  <img src="/css/screenshot8.jpg" alt="Screenshot 2" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+  <b>Screenshot 3: `.env` file setup showing the use of API keys from Contentful.</b>
+  <br/><br/>
+  <img src="/css/screenshot9.png" alt="Screenshot 3" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+   <b>Screenshot 4: "eleventy.config.js" configuration for Contentful.</b>
+   <br/><br/>
+  <img src="/css/screenshot10.jpg" alt="Screenshot 4" width="700" style="display: block; margin: 0 auto;">
+</div>
+<div style="text-align: center; margin-bottom: 20px;">
+   <b>Screenshot 5: Displaying content from Contentful.</b>
+   <br/><br/>
+  <img src="/css/screenshot11.jpg" alt="Screenshot 5" width="700" style="display: block; margin: 0 auto;">
+</div>
+<br/><br/>
+<h2>Comparison and Conclusion</h2>
+<hr>
+<p><br/><br/></p>
+<div style="border-collapse: collapse; width: 100%;">
+  <table style="border: 1px solid gray; width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid gray; padding: 8px;">Feature</th>
+        <th style="border: 1px solid gray; padding: 8px;">Strapi</th>
+        <th style="border: 1px solid gray; padding: 8px;">Contentful</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid gray; padding: 8px;">Ease of Use</td>
+        <td style="border: 1px solid gray; padding: 8px;">Moderate; self-hosted</td>
+        <td style="border: 1px solid gray; padding: 8px;">Easy; cloud-managed</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid gray; padding: 8px;">Customization</td>
+        <td style="border: 1px solid gray; padding: 8px;">High; complete control</td>
+        <td style="border: 1px solid gray; padding: 8px;">Moderate; limited backend control</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid gray; padding: 8px;">Hosting</td>
+        <td style="border: 1px solid gray; padding: 8px;">Self-hosted (requires maintenance)</td>
+        <td style="border: 1px solid gray; padding: 8px;">Cloud-hosted (managed by Contentful)</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid gray; padding: 8px;">Performance</td>
+        <td style="border: 1px solid gray; padding: 8px;">Depends on server setup</td>
+        <td style="border: 1px solid gray; padding: 8px;">Optimized by Contentful</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p><br/><br/></p>
+<h2>My Recommendation</h2>
+<hr>
+<p><br/><br/></p>
+<p>After integrating both CMS platforms into my workout project:
+<br/><br/></p>
+<ul>
+<li>I found <strong>Contentful</strong> to be more convenient for a project where I wanted to avoid managing a server. It was easy to set up and seamlessly integrated with my website.</li>
+<li>However, <strong>Strapi</strong> offered more flexibility and control, which is ideal for projects where I want a more customizable backend.
+<br/><br/></li>
+</ul>
+<p>For this project, I have chosen <strong>Strapi</strong> as the final CMS due to its flexibility, control, and open-source nature. While Contentful provided an easier managed environment, Strapi's ability to allow complete control over the content and customization aligns more closely with my long-term goals for this project.
+<br/><br/></p>
+<hr>
+<p><br/><br/></p>
+<p>This documentation shows my journey to explore and integrate different headless CMS options—in this case, Strapi and Contentful—in my workout-themed website project. My final choice is to use <strong>Strapi</strong> because of its flexibility and the allowance of complete customization for my project.</p>
+</div>
+        </div>
+
+    <!-- Pagination Controls -->
+    <nav>
+      <ul class="pagination">
+         <!-- Check if there is a previous page -->
+          <li class="page-item">
+            <a class="page-link" href="/blog/page/0/">Previous</a> <!-- Link to the previous page -->
+          </li>
+    
+         <!-- Loop through each page in the pagination -->
+          <li class="page-item "> <!-- Highlight the active page -->
+            <a class="page-link" href="/blog/page/0/">1</a> <!-- Page number link -->
+          </li>
+     <!-- Loop through each page in the pagination -->
+          <li class="page-item active"> <!-- Highlight the active page -->
+            <a class="page-link" href="/blog/page/1/">2</a> <!-- Page number link -->
+          </li>
+     <!-- Loop through each page in the pagination -->
+          <li class="page-item "> <!-- Highlight the active page -->
+            <a class="page-link" href="/blog/page/2/">3</a> <!-- Page number link -->
+          </li>
+     <!-- Loop through each page in the pagination -->
+          <li class="page-item "> <!-- Highlight the active page -->
+            <a class="page-link" href="/blog/page/3/">4</a> <!-- Page number link -->
+          </li>
+    
+         <!-- Check if there is a next page -->
+          <li class="page-item">
+            <a class="page-link" href="/blog/page/2/">Next</a> <!-- Link to the next page -->
+          </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+ <!-- Render the main page content dynamically -->
+    </div>
+
+    <footer class="site-footer">
+  <!-- The footer element that serves as the container for the footer content -->
+  <div class="footer-container">
+    <!-- A div container to wrap and style the footer content properly -->
+    <p>
+      &copy;
+      <span id="year"></span>
+      Shivam Janda.
+      <!-- The copyright symbol followed by a span where the current year will be dynamically injected -->
+      All rights reserved.
+      <a href="/pages/terms-and-conditions">Terms and Conditions</a>
+      <!-- A link to the Terms and Conditions page -->
+    </p>
+  </div>
+</footer>
+
+<script>
+  // This JavaScript code dynamically sets the current year in the footer.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script> <!-- Include the footer partial -->
+  </div>
+
+  <!-- External JS libraries (jQuery, Popper.js, Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

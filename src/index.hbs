@@ -1,0 +1,18 @@
+---
+layout: layout.hbs
+title: "Workout Sections"
+permalink: "/"
+---
+
+<h1>Learn more about the kinds of workouts below!</h1>
+
+<p> Click on a button </p>
+
+{{#each collections.workoutPages}}
+  <!-- Iterate through the "workoutPages" collection and generate a link for each workout -->
+  <a href="/sections/{{ this.slug }}/">
+    <button type="button" class="button">
+      <span class="span"></span> {{ this.title }} <!-- Display the title of each workout -->
+    </button>
+  </a>
+{{/each}}

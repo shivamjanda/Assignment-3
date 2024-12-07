@@ -1,0 +1,22 @@
+@use "uniform/core";
+@use "sass:map";
+
+$config: (
+  utilities: (
+    text-size: (
+      important: false,
+      shorthand: text,
+      responsive: true,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (),
+      static-properties: (),
+      variants: (
+        core.text-sizes()
+      ),
+      pseudos: (none)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

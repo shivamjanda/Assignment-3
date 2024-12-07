@@ -1,0 +1,29 @@
+<nav>
+  <ul class="pagination">
+    {{#if pagination.href.previous}} <!-- Check if there is a previous page -->
+      <li class="page-item">
+        <a class="page-link" href="{{ pagination.href.previous }}">Previous</a> <!-- Link to the previous page -->
+      </li>
+    {{else}}
+      <li class="page-item disabled"> <!-- Disable the "Previous" button if on the first page -->
+        <span class="page-link">Previous</span>
+      </li>
+    {{/if}}
+
+    {{#each pagination.hrefs as |href index|}} <!-- Loop through each page in the pagination -->
+      <li class="page-item {{#if (eq ../pagination.pageNumber index)}}active{{/if}}"> <!-- Highlight the active page -->
+        <a class="page-link" href="{{ href }}">{{ add index 1 }}</a> <!-- Page number link -->
+      </li>
+    {{/each}}
+
+    {{#if pagination.href.next}} <!-- Check if there is a next page -->
+      <li class="page-item">
+        <a class="page-link" href="{{ pagination.href.next }}">Next</a> <!-- Link to the next page -->
+      </li>
+    {{else}}
+      <li class="page-item disabled"> <!-- Disable the "Next" button if on the last page -->
+        <span class="page-link">Next</span>
+      </li>
+    {{/if}}
+  </ul>
+</nav>

@@ -1,0 +1,34 @@
+@use "uniform/core";
+@use "sass:map";
+
+$config: (
+  utilities: (
+    skew-y: (
+      important: false,
+      shorthand: skew-y,
+      responsive: true,
+      responsive-pseudos: false,
+      extra-selector: null,
+      properties: (--skew-y),
+      static-properties: (),
+      variants: (
+        n12: -12deg,
+        n10: -10deg,
+        n8: -8deg,
+        n6: -6deg,
+        n4: -4deg,
+        n2: -2deg,
+        0: 0,
+        2: 2deg,
+        4: 4deg,
+        6: 6deg,
+        8: 8deg,
+        10: 10deg,
+        12: 12deg,
+      ),
+      pseudos: (hover, focus)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

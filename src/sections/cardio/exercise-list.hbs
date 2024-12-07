@@ -1,0 +1,44 @@
+---
+layout: layout.hbs
+pagination:
+  data: collections.cardioExercises
+  size: 1
+  alias: exercise
+permalink: "/workouts/cardio/exercises/page/{{ add pagination.pageNumber 1 }}/index.html"
+---
+
+<section class="cardio-section">
+  <div class="container">
+
+    <!-- Section Header for Cardio Exercises -->
+    <div class="header">
+      <h1>Cardio Exercises</h1>
+    </div>
+
+    <!-- Exercise List -->
+    {{#if exercise}}
+    <div class="exercise-list">
+
+      <!-- Display exercise name as a button linking to the detailed exercise page -->
+      <div class="exercise-name">
+        <a href="/workouts/cardio/exercises/{{ exercise.exerciseSlug }}/" class="glow-exercise-button hover-animate">
+          {{ exercise.name }}
+        </a>
+      </div>
+
+      <!-- Display exercise description -->
+      <div class="exercise-description">
+        <p>{{ exercise.description }}</p>
+      </div>
+
+      {{else}}
+      <!-- Fallback message if no exercises are available -->
+      <div class="no-exercises">
+        <p>No cardio exercises available at the moment.</p>
+      </div>
+      {{/if}}
+
+      <!-- Pagination Controls -->
+      {{> pagination }}
+    </div>
+</section>

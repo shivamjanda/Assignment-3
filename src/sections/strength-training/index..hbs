@@ -1,0 +1,40 @@
+---
+layout: layout.hbs
+title: "Strength Training Workouts"
+permalink: "/sections/strength-training/index.html"
+---
+
+<section class="strength-section">
+  <div class="container">
+    <!-- Section Header for Strength Training Workouts -->
+    {{#if collections.strengthTrainingWorkoutsCollection.[0]}}
+    <div class="strength-header">
+      <!-- Display the title of the first strength training workout in the collection if available -->
+      <h1>{{ collections.strengthTrainingWorkoutsCollection.[0].title }}</h1>
+
+      <!-- Display the description of the first strength training workout in the collection if available -->
+      <p>{{ collections.strengthTrainingWorkoutsCollection.[0].description }}</p>
+    </div>
+    {{else}}
+    <!-- If no strength training data is available, display a fallback message -->
+    <div class="strength-header">
+      <h1>Strength Training Workouts</h1>
+      <p>No strength training data available at the moment.</p>
+    </div>
+    {{/if}}
+
+    <!-- Button linking to the strength training exercises page, with pagination starting from page 1 -->
+    <a href="/workouts/strength-training/exercises/page/1/">
+      <button type="button" class="glow-exercise-button">
+        <span class="span"></span> See Strength Training Exercises <!-- Button text to navigate to exercises -->
+      </button>
+    </a>
+
+    <!-- Button to navigate back to the main workout sections page -->
+    <a href="/">
+      <button type="button" class="glow-exercise-button">
+        <span class="span"></span> Back to Workout Sections <!-- Button text for going back to the main page -->
+      </button>
+    </a>
+  </div>
+</section>

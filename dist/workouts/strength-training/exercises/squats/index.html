@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Define character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure proper scaling on mobile devices -->
+<link rel="stylesheet" href="/css/main.css">
+  <title></title> <!-- Dynamic page title -->
+</head>
+<body>
+
+  <div class="wrapper"> <!-- Main wrapper for the content -->
+    <div class="banner">
+      <div class="navbar">
+        <img src="/css/logo.png" class="logo">
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/about">About</a></li>
+    <li><a href="/pages/terms-and-conditions">Terms and Conditions</a></li>
+     <li><a href="/blog/page/0/">Blogs</a></li> 
+</ul>
+ <!-- Include the header partial (navigation) -->
+      </div>
+    </div>
+
+    <div class="content">
+      <section class="exercise-detail-section">
+  <div class="container exercise-container">
+
+    <!-- Display exercise image if available; otherwise, show a default image -->
+    <div class="exercise-image">
+      <img src="http://127.0.0.1:1337/uploads/squats_df2aa87589.jpg" alt="Squats Exercise Image"
+        onerror="this.onerror=null; this.src='/css/default-exercise.png';">
+    </div>
+
+    <!-- Section for displaying exercise details -->
+    <div class="exercise-content">
+      <!-- Display the exercise name -->
+      <h1>Squats</h1>
+
+      <!-- Display the exercise description -->
+      <p>Squats are a fundamental lower-body exercise that engage multiple muscle groups, including the quadriceps, hamstrings, glutes, and calves. By mimicking a natural sitting motion, squats help to improve mobility and build functional strength that translates to everyday activities. In addition to building muscle, squats can enhance balance and coordination. They are also an excellent exercise for boosting the metabolism, as they activate large muscle groups, which leads to greater calorie burn. Incorporating squats into your workout routine will not only strengthen your legs but also improve overall athletic performance.</p>
+
+      <!-- Button to navigate back to the main workouts page -->
+      <div class="back-button">
+        <a href="/" class="button">Back to Workouts</a>
+      </div>
+    </div>
+
+  </div>
+</section> <!-- Render the main page content dynamically -->
+    </div>
+
+    <footer class="site-footer">
+  <!-- The footer element that serves as the container for the footer content -->
+  <div class="footer-container">
+    <!-- A div container to wrap and style the footer content properly -->
+    <p>
+      &copy;
+      <span id="year"></span>
+      Shivam Janda.
+      <!-- The copyright symbol followed by a span where the current year will be dynamically injected -->
+      All rights reserved.
+      <a href="/pages/terms-and-conditions">Terms and Conditions</a>
+      <!-- A link to the Terms and Conditions page -->
+    </p>
+  </div>
+</footer>
+
+<script>
+  // This JavaScript code dynamically sets the current year in the footer.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script> <!-- Include the footer partial -->
+  </div>
+
+  <!-- External JS libraries (jQuery, Popper.js, Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

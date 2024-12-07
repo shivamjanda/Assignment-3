@@ -1,0 +1,43 @@
+@use "uniform/core";
+@use "sass:map";
+
+$range-limit: map.get(core.$all-config, range-limits, gutter);
+
+$gutter-map: ();
+@each $size-key, $size-value in core.sizes($range-limit) {
+  $map: (
+    $size-key:  (
+      margin-top: calc(#{$size-value} * var(--gutter-top)),
+      margin-bottom: calc(#{$size-value} * var(--gutter-bottom)),
+    )
+  );
+  $gutter-map: map.merge($gutter-map, $map);
+}
+
+$config: (
+  utilities: (
+    gutter-y: (
+      important: false,
+      shorthand: gutter-y,
+      responsive: true,
+      responsive-pseudos: false,
+      extra-selector: '> * + *',
+      properties: (margin),
+      static-properties: (
+        --gutter-top: 1,
+        --gutter-bottom: 0,
+      ),
+      variants: (
+        core.merge(
+          $gutter-map,
+          (
+            0: 0,
+          )
+        )
+      ),
+      pseudos: (none)
+    )
+  )
+);
+
+core.$all-config: map.deep-merge(core.$all-config, $config);

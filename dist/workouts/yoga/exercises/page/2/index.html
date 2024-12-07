@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Define character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure proper scaling on mobile devices -->
+<link rel="stylesheet" href="/css/main.css">
+  <title></title> <!-- Dynamic page title -->
+</head>
+<body>
+
+  <div class="wrapper"> <!-- Main wrapper for the content -->
+    <div class="banner">
+      <div class="navbar">
+        <img src="/css/logo.png" class="logo">
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/about">About</a></li>
+    <li><a href="/pages/terms-and-conditions">Terms and Conditions</a></li>
+     <li><a href="/blog/page/0/">Blogs</a></li> 
+</ul>
+ <!-- Include the header partial (navigation) -->
+      </div>
+    </div>
+
+    <div class="content">
+      
+<section class="yoga-section">
+  <div class="container">
+
+    <!-- Section Header for Yoga Exercises -->
+    <div class="header">
+      <h1>Yoga Exercises</h1>
+    </div>
+
+    <!-- Check if there are yoga exercises to display -->
+    <div class="exercise-list">
+
+      <!-- Display the exercise name as a button linking to its detailed page -->
+      <div class="exercise-name">
+        <a href="/workouts/yoga/exercises/downward-dog/" class="glow-exercise-button hover-animate">
+          Downward Dog
+        </a>
+      </div>
+
+      <!-- Display the description of the exercise -->
+      <div class="exercise-description">
+        <p>Downward Dog, or &#x27;Adho Mukha Svanasana&#x27;, is one of the most recognized and widely practiced yoga poses. It provides a full-body stretch, lengthening the spine, strengthening the arms and legs, and engaging the core. This foundational pose energizes the body and can help improve circulation, making it a great transitional pose in yoga flows. Whether you&#x27;re using it as a warm-up or cool-down, Downward Dog helps to release tension from the back and shoulders while improving flexibility in the hamstrings and calves.</p>
+      </div>
+
+
+      <!-- Include pagination controls for navigating between exercises -->
+      <nav>
+        <ul class="pagination">
+           <!-- Check if there is a previous page -->
+            <li class="page-item">
+              <a class="page-link" href="/workouts/yoga/exercises/page/1/">Previous</a> <!-- Link to the previous page -->
+            </li>
+      
+           <!-- Loop through each page in the pagination -->
+            <li class="page-item "> <!-- Highlight the active page -->
+              <a class="page-link" href="/workouts/yoga/exercises/page/1/">1</a> <!-- Page number link -->
+            </li>
+       <!-- Loop through each page in the pagination -->
+            <li class="page-item active"> <!-- Highlight the active page -->
+              <a class="page-link" href="/workouts/yoga/exercises/page/2/">2</a> <!-- Page number link -->
+            </li>
+       <!-- Loop through each page in the pagination -->
+            <li class="page-item "> <!-- Highlight the active page -->
+              <a class="page-link" href="/workouts/yoga/exercises/page/3/">3</a> <!-- Page number link -->
+            </li>
+      
+           <!-- Check if there is a next page -->
+            <li class="page-item">
+              <a class="page-link" href="/workouts/yoga/exercises/page/3/">Next</a> <!-- Link to the next page -->
+            </li>
+        </ul>
+      </nav>
+    </div>
+</section> <!-- Render the main page content dynamically -->
+    </div>
+
+    <footer class="site-footer">
+  <!-- The footer element that serves as the container for the footer content -->
+  <div class="footer-container">
+    <!-- A div container to wrap and style the footer content properly -->
+    <p>
+      &copy;
+      <span id="year"></span>
+      Shivam Janda.
+      <!-- The copyright symbol followed by a span where the current year will be dynamically injected -->
+      All rights reserved.
+      <a href="/pages/terms-and-conditions">Terms and Conditions</a>
+      <!-- A link to the Terms and Conditions page -->
+    </p>
+  </div>
+</footer>
+
+<script>
+  // This JavaScript code dynamically sets the current year in the footer.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script> <!-- Include the footer partial -->
+  </div>
+
+  <!-- External JS libraries (jQuery, Popper.js, Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
